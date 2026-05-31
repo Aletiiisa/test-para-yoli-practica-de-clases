@@ -7,13 +7,16 @@ function comprar(producto) {
 productoActual = producto;
 
 ```
-document.getElementById("pedidoModal").style.display = "block";
-document.getElementById("productoSeleccionado").value = producto;
+const modal = document.getElementById("pedidoModal");
 
-window.scrollTo({
-    top: document.getElementById("pedidoModal").offsetTop,
-    behavior: "smooth"
-});
+if (modal) {
+    modal.style.display = "block";
+
+    window.scrollTo({
+        top: modal.offsetTop,
+        behavior: "smooth"
+    });
+}
 ```
 
 }
@@ -21,9 +24,9 @@ window.scrollTo({
 async function enviarPedidoTelegram() {
 
 ```
-const nombre = document.getElementById("nombrePedido").value;
-const correo = document.getElementById("correoPedido").value;
-const telefono = document.getElementById("telefonoPedido").value;
+const nombre = document.getElementById("nombrePedido").value.trim();
+const correo = document.getElementById("correoPedido").value.trim();
+const telefono = document.getElementById("telefonoPedido").value.trim();
 
 if (!nombre || !correo || !telefono) {
     alert("Completa todos los campos.");
@@ -43,7 +46,20 @@ const mensaje =
 ```
 try {
 
-    await fetch(
+    if (
+        BOT_TOKEN === "PON_AQUI_TU_NUEVO_TOKEN" ||
+        CHAT_ID === "PON_AQUI_TU_CHAT_ID"
+    ) {
+
+        alert(
+            "Formulario funcionando.\n\n" +
+            "Ahora debes colocar tu BOT_TOKEN y CHAT_ID reales."
+        );
+
+        return;
+    }
+
+    const respuesta = await fetch(
         `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
         {
             method: "POST",
@@ -57,13 +73,30 @@ try {
         }
     );
 
-    alert("Pedido enviado correctamente.");
+    const datos = await respuesta.json();
 
-    document.getElementById("pedidoModal").style.display = "none";
+    if (datos.ok) {
+
+        alert("✅ Pedido enviado correctamente.");
+
+        document.getElementById("nombrePedido").value = "";
+        document.getElementById("correoPedido").value = "";
+        document.getElementById("telefonoPedido").value = "";
+
+        document.getElementById("pedidoModal").style.display = "none";
+
+    } else {
+
+        alert("Error de Telegram.");
+        console.log(datos);
+
+    }
 
 } catch (error) {
-    alert("Error al enviar el pedido.");
+
     console.error(error);
+    alert("Error al enviar el pedido.");
+
 }
 ```
 
