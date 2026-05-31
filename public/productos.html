@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flores de la Fe | Productos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>🌸 Flores de la Fe</h1>
+
+```
+<nav>
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+</nav>
+```
+
+</header>
+
+<section class="destacados">
+
+```
+<h2>Nuestros Productos</h2>
+
+<div class="productos">
+
+    <div class="producto">
+        <img src="img/rosa.png" alt="Rosas">
+        <h3>🌹 Rosas Rojas</h3>
+        <p>Hermoso ramo de rosas frescas.</p>
+        <strong>RD$500</strong>
+        <br><br>
+        <button class="btn" onclick="comprar('Rosas Rojas')">Comprar</button>
+    </div>
+
+    <div class="producto">
+        <img src="img/girasol.png" alt="Girasoles">
+        <h3>🌻 Girasoles</h3>
+        <p>Flores llenas de energía y alegría.</p>
+        <strong>RD$450</strong>
+        <br><br>
+        <button class="btn" onclick="comprar('Girasoles')">Comprar</button>
+    </div>
+
+    <div class="producto">
+        <img src="img/tulipan.png" alt="Tulipanes">
+        <h3>🌷 Tulipanes</h3>
+        <p>Elegancia y delicadeza para regalar.</p>
+        <strong>RD$600</strong>
+        <br><br>
+        <button class="btn" onclick="comprar('Tulipanes')">Comprar</button>
+    </div>
+
+    <div class="producto">
+        <img src="img/orquidea.png" alt="Orquídeas">
+        <h3>🪷 Orquídeas</h3>
+        <p>Orquídeas premium seleccionadas.</p>
+        <strong>RD$850</strong>
+        <br><br>
+        <button class="btn" onclick="comprar('Orquídeas')">Comprar</button>
+    </div>
+
+</div>
+```
+
+</section>
+
+<section id="pedidoModal" class="contacto" style="display:none;">
+
+```
+<form>
+
+    <h2>🌸 Realizar Pedido</h2>
+
+    <input type="text" id="nombrePedido" placeholder="Nombre completo" required>
+    <br><br>
+
+    <input type="email" id="correoPedido" placeholder="Correo electrónico" required>
+    <br><br>
+
+    <input type="tel" id="telefonoPedido" placeholder="Teléfono" required>
+    <br><br>
+
+    <input type="hidden" id="productoSeleccionado">
+
+    <button type="button" class="btn" onclick="enviarPedidoTelegram()">
+        Confirmar Pedido
+    </button>
+
+</form>
+```
+
+</section>
+
+<footer>
+    <p>&copy; 2026 Flores de la Fe</p>
+</footer>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
