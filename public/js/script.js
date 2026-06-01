@@ -82,3 +82,6 @@ async function enviarPedidoTelegram() {
 // Hace las funciones visibles para onclick=""
 window.comprar = comprar;
 window.enviarPedidoTelegram = enviarPedidoTelegram;
+function cerrarModal() {
+document.getElementById("pedidoModal").style.display = "none";
+}
