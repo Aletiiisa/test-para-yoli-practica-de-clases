@@ -9,7 +9,7 @@ function comprar(producto) {
     const modal = document.getElementById("pedidoModal");
 
     if (modal) {
-        modal.style.display = "block";
+        modal.style.display = "flex";
 
         window.scrollTo({
             top: modal.offsetTop,
